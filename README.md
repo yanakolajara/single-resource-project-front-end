@@ -1,5 +1,6 @@
 # Recipe App
-<hr>
+
+
 Welcome to the Recipe App! This web application allows users to view a list of recipes on the homepage, click on a specific recipe to view its details, add reviews, and rate the recipes. Users can also add new reviews, and update, and delete existing reviews.
 
 ---
