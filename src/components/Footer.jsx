@@ -22,7 +22,7 @@ const Footer = () => {
             <a href="/features">Features</a>
           </Col>
           <Col>
-            <a href="/contact">Contact</a>
+            <a href="/contacts">Contact</a>
           </Col>
         </Row>
       </Container>
