@@ -1,0 +1,39 @@
+main {
+    min-height: 85vh;
+  }
+
+  a {
+    text-decoration: none;
+    color: gray;
+  }
+
+  .rating span {
+    margin: 0.1rem;
+  }
+  
+  .rating svg {
+    color: #FFA534;
+  }
+  
+  .rating-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding-left: 0.5rem;
+  }
+
+  .recipe-title {
+    height: 1.5em;
+    color: gray;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+  }
+
+  .carousel-caption {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }

@@ -1,0 +1,138 @@
+export const recipes = [
+  {
+    id: 0,
+    name: 'Peanut butter & jelly sandwich',
+    photo:
+      'https://images.unsplash.com/photo-1557275357-072087771588?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+    type: 'Snack',
+    cuisine: 'American',
+    is_healthy: true,
+    is_vegan: false,
+    difficulty: 'easy',
+    ingredients: ['jelly', 'bread', 'peanut butter'],
+    description:
+      'Lorem ipsum dolor sit amet. Qui iure galisum id libero dolore id enim vero hic molestiae ipsa est provident omnis. Ut dolores quod et eius excepturi aut dolor quisquam et consequatur rerum vel necessitatibus eaque. Sed dolor voluptatibus cum veritatis magnam aut molestiae sint?',
+    cookingTime: '5 mins',
+    rating: 5,
+    numOfReviews: 40,
+  },
+  {
+    id: 1,
+    name: 'Peanut butter & jelly sandwich',
+    photo:
+      'https://images.unsplash.com/photo-1557275357-072087771588?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+    type: 'Snack',
+    cuisine: 'American',
+    is_healthy: true,
+    is_vegan: false,
+    difficulty: 'easy',
+    ingredients: ['jelly', 'bread', 'peanut butter'],
+    description:
+      'Lorem ipsum dolor sit amet. Qui iure galisum id libero dolore id enim vero hic molestiae ipsa est provident omnis. Ut dolores quod et eius excepturi aut dolor quisquam et consequatur rerum vel necessitatibus eaque. Sed dolor voluptatibus cum veritatis magnam aut molestiae sint?',
+    cookingTime: 0,
+    rating: 2,
+    numOfReviews: 10,
+  },
+  {
+    id: 2,
+    name: 'Peanut butter & jelly sandwich',
+    photo:
+      'https://images.unsplash.com/photo-1557275357-072087771588?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+    type: 'Snack',
+    cuisine: 'American',
+    is_healthy: true,
+    is_vegan: false,
+    difficulty: 'easy',
+    ingredients: ['jelly', 'bread', 'peanut butter'],
+    description:
+      'Lorem ipsum dolor sit amet. Qui iure galisum id libero dolore id enim vero hic molestiae ipsa est provident omnis. Ut dolores quod et eius excepturi aut dolor quisquam et consequatur rerum vel necessitatibus eaque. Sed dolor voluptatibus cum veritatis magnam aut molestiae sint?',
+    cookingTime: '5 mins',
+    rating: 4,
+    numOfReviews: 35,
+  },
+  {
+    id: 3,
+    name: 'Peanut butter & jelly sandwich',
+    photo:
+      'https://images.unsplash.com/photo-1557275357-072087771588?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+    type: 'Snack',
+    cuisine: 'American',
+    is_healthy: true,
+    is_vegan: false,
+    difficulty: 'easy',
+    ingredients: ['jelly', 'bread', 'peanut butter'],
+    description:
+      'Lorem ipsum dolor sit amet. Qui iure galisum id libero dolore id enim vero hic molestiae ipsa est provident omnis. Ut dolores quod et eius excepturi aut dolor quisquam et consequatur rerum vel necessitatibus eaque. Sed dolor voluptatibus cum veritatis magnam aut molestiae sint?',
+    cookingTime: '5 mins',
+    rating: 5,
+    numOfReviews: 20,
+  },
+  {
+    id: 4,
+    name: 'Peanut butter & jelly sandwich',
+    photo:
+      'https://images.unsplash.com/photo-1557275357-072087771588?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+    type: 'Snack',
+    cuisine: 'American',
+    is_healthy: true,
+    is_vegan: false,
+    difficulty: 'easy',
+    ingredients: ['jelly', 'bread', 'peanut butter'],
+    description:
+      'Lorem ipsum dolor sit amet. Qui iure galisum id libero dolore id enim vero hic molestiae ipsa est provident omnis. Ut dolores quod et eius excepturi aut dolor quisquam et consequatur rerum vel necessitatibus eaque. Sed dolor voluptatibus cum veritatis magnam aut molestiae sint?',
+    cookingTime: '5 mins',
+    rating: 3,
+    numOfReviews: 23,
+  },
+  {
+    id: 5,
+    name: 'Peanut butter & jelly sandwich',
+    photo:
+      'https://images.unsplash.com/photo-1557275357-072087771588?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+    type: 'Snack',
+    cuisine: 'American',
+    is_healthy: true,
+    is_vegan: false,
+    difficulty: 'easy',
+    ingredients: ['jelly', 'bread', 'peanut butter'],
+    description:
+      'Lorem ipsum dolor sit amet. Qui iure galisum id libero dolore id enim vero hic molestiae ipsa est provident omnis. Ut dolores quod et eius excepturi aut dolor quisquam et consequatur rerum vel necessitatibus eaque. Sed dolor voluptatibus cum veritatis magnam aut molestiae sint?',
+    cookingTime: '5 mins',
+    rating: 5,
+    numOfReviews: 40,
+  },
+  {
+    id: 6,
+    name: 'Peanut butter & jelly sandwich',
+    photo:
+      'https://images.unsplash.com/photo-1557275357-072087771588?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+    type: 'Snack',
+    cuisine: 'American',
+    is_healthy: true,
+    is_vegan: false,
+    difficulty: 'easy',
+    ingredients: ['jelly', 'bread', 'peanut butter'],
+    description:
+      'Lorem ipsum dolor sit amet. Qui iure galisum id libero dolore id enim vero hic molestiae ipsa est provident omnis. Ut dolores quod et eius excepturi aut dolor quisquam et consequatur rerum vel necessitatibus eaque. Sed dolor voluptatibus cum veritatis magnam aut molestiae sint?',
+    cookingTime: '5 mins',
+    rating: 4,
+    numOfReviews: 2,
+  },
+  {
+    id: 7,
+    name: 'Peanut butter & jelly sandwich',
+    photo:
+      'https://images.unsplash.com/photo-1557275357-072087771588?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+    type: 'Snack',
+    cuisine: 'American',
+    is_healthy: true,
+    is_vegan: false,
+    difficulty: 'easy',
+    ingredients: ['jelly', 'bread', 'peanut butter'],
+    description:
+      'Lorem ipsum dolor sit amet. Qui iure galisum id libero dolore id enim vero hic molestiae ipsa est provident omnis. Ut dolores quod et eius excepturi aut dolor quisquam et consequatur rerum vel necessitatibus eaque. Sed dolor voluptatibus cum veritatis magnam aut molestiae sint?',
+    cookingTime: '5 mins',
+    rating: 2,
+    numOfReviews: 1,
+  },
+];
