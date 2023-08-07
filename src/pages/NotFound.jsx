@@ -10,7 +10,7 @@ function NotFound(){
             <h1>Page Not Found</h1>
             <button
             id="notFoundHomeButton"
-            onClick={() => navigate('/')}
+            onClick={() => navigate('/home')}
             >Home</button>
         </div>
     )
