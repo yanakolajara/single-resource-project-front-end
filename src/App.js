@@ -15,10 +15,8 @@ function App() {
       <main className="py-3">
         <Container>
           <Routes>
-            <Route path="/home" element={<Home />} />
-            <Route path="/recipe/:id" element={<Recipe />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contacts" element={<Contacts />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/recipes/:id" element={<Recipe />} />
           </Routes>
         </Container>
       </main>

@@ -1,12 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Row, Col, Image, ListGroup, Card } from 'react-bootstrap';
+// import Axios from 'axios';
+
 import Rating from '../components/Rating';
-import { recipes } from '../recipe';
+
+import { getRecipeById } from '../Api/Api';
 
 const Recipe = () => {
+  const [recipe, setRecipe] = useState(null);
+
   const { id } = useParams();
-  const recipe = recipes.find((item) => item.id === +id);
+
+  useEffect(() => {
+    fetchRecipeById();
+    // eslint-disable-next-line
+  }, []);
+
+  async function fetchRecipeById() {
+    try {
+      let result = await getRecipeById(id);
+
+      setRecipe(result.data);
+      console.log(result.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  if (!recipe) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <>
@@ -41,11 +65,7 @@ const Recipe = () => {
             <ListGroup variant="flush">
               <ListGroup.Item>
                 <h5>Ingredients:</h5>
-                <ul>
-                  {recipe.ingredients.map((ingredient, index) => (
-                    <li key={index}>{ingredient}</li>
-                  ))}
-                </ul>
+                <span>{recipe.ingredients}</span>
               </ListGroup.Item>
               <ListGroup.Item>
                 <h5>
@@ -62,11 +82,11 @@ const Recipe = () => {
                   Difficulty: <span>{recipe.difficulty}</span>
                 </h5>
               </ListGroup.Item>
-              <ListGroup.Item>
+              {/* <ListGroup.Item>
                 <h5>
                   Cooking Time: <span>{recipe.cookingTime}</span>
                 </h5>
-              </ListGroup.Item>
+              </ListGroup.Item> */}
             </ListGroup>
           </Card>
         </Col>
