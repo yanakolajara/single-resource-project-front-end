@@ -1,0 +1,33 @@
+/** Home page */
+
+
+
+/** Error page */
+
+#notFoundDiv{
+    display: inline-flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 30px;
+    align-items: center;
+}
+
+#notFoundDiv img{
+    width: 60%;
+    margin-bottom: 30px;
+}
+
+#notFoundHomeButton{
+    width: 120px;
+    height: 30px;
+    margin-top: 30px;
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 15px;
+    transition: .1s;
+}
+
+#notFoundHomeButton:hover{
+    width: 125px;
+    height: 33px;
+    background-color: rgb(209, 209, 209);
+}
