@@ -6,16 +6,20 @@ import { Row, Col, Image, ListGroup, Card } from 'react-bootstrap';
 import Rating from '../components/Rating';
 import Loading from '../components/Loading';
 
-import { getRecipeById } from '../Api/Api';
+import { getRecipeById, getRecipeReviews } from '../Api/Api';
 
 const Recipe = () => {
   const [recipe, setRecipe] = useState(null);
-  const [, setIsLoading] = useState(true);
+  const [reviewsCount, setReviewsCount] = useState(0);
+  const [reviewsRating, setReviewsRating] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [reviewsLoading, setReviewsLoading] = useState(true);
 
   const { id } = useParams();
 
   useEffect(() => {
     fetchRecipeById();
+    fetchRecipeReviews();
     // eslint-disable-next-line
   }, []);
 
@@ -32,7 +36,27 @@ const Recipe = () => {
     }
   }
 
-  if (!recipe) {
+  async function fetchRecipeReviews() {
+    try {
+      let result = await getRecipeReviews(id)
+      if(!result.data){
+        setReviewsCount(0)
+        setReviewsRating(0)
+      }else if(result.data.length === 1){
+        setReviewsCount(1)
+        setReviewsRating(result.data[0].rating)
+      }else{
+        const reviewsAverage = result.data.reduce((x,y) => Number(x.rating) + Number(y.rating)) / result.data.length;
+        setReviewsCount(result.data.length)
+        setReviewsRating(Math.round(reviewsAverage * 2) / 2)
+      }
+      setReviewsLoading(false)
+    } catch (error) {
+      console.log(error)
+      setReviewsLoading(false)
+    }
+  }
+  if (isLoading && reviewsLoading) {
     return <Loading center />;
   }
 
@@ -52,8 +76,8 @@ const Recipe = () => {
             </ListGroup.Item>
             <ListGroup.Item>
               <Rating
-                value={recipe.rating}
-                text={`${recipe.numOfReviews} reviews`}
+                value={reviewsRating}
+                text={`${reviewsCount} reviews`}
               />
               <Link
                 to={`/recipes/${recipe.id}/reviews`}
