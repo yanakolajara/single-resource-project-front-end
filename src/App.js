@@ -16,7 +16,7 @@ function App() {
       <main className="py-3">
         <Container>
           <Routes>
-            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route path="/recipes/:id" element={<Recipe />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
