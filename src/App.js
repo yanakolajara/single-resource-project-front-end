@@ -8,6 +8,7 @@ import Recipe from './pages/Recipe';
 import About from './pages/About';
 import Contacts from './pages/Contacts';
 import NotFound from './pages/NotFound';
+import Reviews from './components/Reviews';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/recipes/:id" element={<Recipe />} />
+            <Route path="/recipes/:id/reviews" element={<Reviews />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Container>

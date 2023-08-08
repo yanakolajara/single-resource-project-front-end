@@ -21,7 +21,7 @@ async function getRecipeById(id) {
 
 async function getRecipeReviews(id) {
   try {
-    let result = await Axios.get(`/recipes/${id}/reviews`);
+    let result = await Axios.get(`/recipes/${id}/reviews/get-reviews`);
 
     return result;
   } catch (e) {
