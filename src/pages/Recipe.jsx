@@ -10,24 +10,30 @@ import { getRecipeById, getRecipeReviews } from '../Api/Api';
 
 const Recipe = () => {
   const [recipe, setRecipe] = useState(null);
-  const [reviewsCount, setReviewsCount] = useState(0);
-  const [reviewsRating, setReviewsRating] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
-  const [reviewsLoading, setReviewsLoading] = useState(true);
+  const [, setIsLoading] = useState(true);
+  const [reviewCount, setReviewCount] = useState(0);
+  const [reviewAverage, setReviewAverage] = useState(0);
 
   const { id } = useParams();
 
   useEffect(() => {
     fetchRecipeById();
-    fetchRecipeReviews();
     // eslint-disable-next-line
   }, []);
 
   async function fetchRecipeById() {
     try {
-      let result = await getRecipeById(id);
-
-      setRecipe(result.data);
+      let recipeObj = await getRecipeById(id);
+      let reviewObj = await getRecipeReviews(id);
+      if(!!reviewObj.data){
+        setReviewCount(reviewObj.data.length)
+        if(Number(reviewObj.data.length) !== 1){
+          setReviewAverage(Math.round((reviewObj.data.reduce((x,y) => Number(x.rating) + Number(y.rating)) / reviewObj.data.length) * 2) / 2)
+        }else{
+          setReviewAverage(reviewObj.data[0].rating)
+        }
+      }
+      setRecipe(recipeObj.data);
       // console.log(result.data);
       setIsLoading(false);
     } catch (error) {
@@ -36,27 +42,7 @@ const Recipe = () => {
     }
   }
 
-  async function fetchRecipeReviews() {
-    try {
-      let result = await getRecipeReviews(id)
-      if(!result.data){
-        setReviewsCount(0)
-        setReviewsRating(0)
-      }else if(result.data.length === 1){
-        setReviewsCount(1)
-        setReviewsRating(result.data[0].rating)
-      }else{
-        const reviewsAverage = result.data.reduce((x,y) => Number(x.rating) + Number(y.rating)) / result.data.length;
-        setReviewsCount(result.data.length)
-        setReviewsRating(Math.round(reviewsAverage * 2) / 2)
-      }
-      setReviewsLoading(false)
-    } catch (error) {
-      console.log(error)
-      setReviewsLoading(false)
-    }
-  }
-  if (isLoading && reviewsLoading) {
+  if (!recipe) {
     return <Loading center />;
   }
 
@@ -76,8 +62,8 @@ const Recipe = () => {
             </ListGroup.Item>
             <ListGroup.Item>
               <Rating
-                value={reviewsRating}
-                text={`${reviewsCount} reviews`}
+                value={reviewAverage}
+                text={`${reviewCount} reviews`}
               />
               <Link
                 to={`/recipes/${recipe.id}/reviews`}
