@@ -4,11 +4,13 @@ import { Row, Col, Image, ListGroup, Card } from 'react-bootstrap';
 // import Axios from 'axios';
 
 import Rating from '../components/Rating';
+import Loading from '../components/Loading';
 
 import { getRecipeById } from '../Api/Api';
 
 const Recipe = () => {
   const [recipe, setRecipe] = useState(null);
+  const [, setIsLoading] = useState(true);
 
   const { id } = useParams();
 
@@ -22,14 +24,16 @@ const Recipe = () => {
       let result = await getRecipeById(id);
 
       setRecipe(result.data);
-      console.log(result.data);
+      // console.log(result.data);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
+      setIsLoading(false);
     }
   }
 
   if (!recipe) {
-    return <p>Loading...</p>;
+    return <Loading center />;
   }
 
   return (
@@ -51,6 +55,12 @@ const Recipe = () => {
                 value={recipe.rating}
                 text={`${recipe.numOfReviews} reviews`}
               />
+              <Link
+                to={`/recipes/${recipe.id}/reviews`}
+                className="btn btn-primary mt-2"
+              >
+                View Reviews
+              </Link>
             </ListGroup.Item>
             <ListGroup.Item>
               <h5>Description:</h5>

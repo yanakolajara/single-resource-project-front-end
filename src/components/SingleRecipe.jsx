@@ -8,7 +8,12 @@ const SingleRecipe = ({ recipe }) => {
   return (
     <Card className="my-3 p-3 rounded">
       <Link to={`/recipes/${recipe.id}`}>
-        <Card.Img src={recipe.photo} alt="recipe-image" variant="top" />
+        <Card.Img
+          src={recipe.photo}
+          alt="recipe-image"
+          variant="top"
+          style={{ width: '250px', height: '250px' }}
+        />
       </Link>
       <Card.Body>
         <Link to={`/recipes/${recipe.id}`}>

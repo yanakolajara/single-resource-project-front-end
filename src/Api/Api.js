@@ -19,4 +19,14 @@ async function getRecipeById(id) {
   }
 }
 
-export { getAllRecipes, getRecipeById };
+async function getRecipeReviews(id) {
+  try {
+    let result = await Axios.get(`/recipes/${id}/reviews`);
+
+    return result;
+  } catch (e) {
+    return e;
+  }
+}
+
+export { getAllRecipes, getRecipeById, getRecipeReviews };

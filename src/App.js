@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Recipe from './pages/Recipe';
 import About from './pages/About';
 import Contacts from './pages/Contacts';
+import Reviews from './components/Reviews';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/recipes/:id" element={<Recipe />} />
+            <Route path="/recipes/:id/reviews" element={<Reviews />} />
           </Routes>
         </Container>
       </main>

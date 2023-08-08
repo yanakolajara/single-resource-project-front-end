@@ -2,25 +2,34 @@ import React, { useEffect, useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import SingleRecipe from '../components/SingleRecipe';
 import RecipeCarousel from '../components/RecipeCarousel';
+import Loading from '../components/Loading';
 
 import { getAllRecipes } from '../Api/Api';
 
 const Home = () => {
   const [recipes, setRecipes] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchRecipes = async () => {
     try {
       const res = await getAllRecipes();
-      console.log(res);
+      // console.log(res);
       setRecipes(res.data);
+      setIsLoading(false);
     } catch (err) {
       console.log(err);
+      setIsLoading(false);
     }
   };
 
   useEffect(() => {
     fetchRecipes();
   }, []);
+
+  if (isLoading) {
+    return <Loading center />;
+  }
+
   return (
     <>
       <RecipeCarousel />
