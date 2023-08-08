@@ -13,7 +13,7 @@ const Footer = () => {
             <p>&copy; {new Date().getFullYear()}</p>
           </Col>
           <Col>
-            <a href="/home">Home</a>
+            <a href="/">Home</a>
           </Col>
           <Col>
             <a href="/about">About</a>
