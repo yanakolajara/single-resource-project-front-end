@@ -80,13 +80,13 @@ const Review = ({
                 >
                   Cancel
                 </Button>
-                <Button
+                {/* <Button
                   type="submit"
                   className="btn btn-primary"
                   style={{ marginRight: '1rem' }}
                 >
                   Save
-                </Button>
+                </Button> */}
               </>
             ) : (
               <Button

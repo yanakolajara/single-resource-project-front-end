@@ -104,11 +104,11 @@ const ReviewForm = ({
           step="1"
         />
       </Form.Group>
-      {/* <div className="d-flex justify-content-end">
+      <div className="d-flex justify-content-end">
         <button type="submit" className="btn btn-primary mr-2">
           Save
         </button>
-      </div> */}
+      </div>
     </Form>
   );
 };

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 
@@ -6,7 +5,6 @@ import { Row, Col, Image, ListGroup, Card } from 'react-bootstrap';
 
 import Rating from '../components/Rating';
 import Loading from '../components/Loading';
-
 
 import { getRecipeById, getRecipeReviews } from '../Api/Api';
 
@@ -23,13 +21,23 @@ const Recipe = () => {
     try {
       let recipeObj = await getRecipeById(id);
       let reviewObj = await getRecipeReviews(id);
-      if(!!reviewObj.response){navigate('error')}
-      if(!!reviewObj.data){
-        setReviewCount(reviewObj.data.length)
-        if(Number(reviewObj.data.length) !== 1){
-          setReviewAverage(Math.round((reviewObj.data.reduce((x,y) => Number(x.rating) + Number(y.rating)) / reviewObj.data.length) * 2) / 2)
-        }else{
-          setReviewAverage(reviewObj.data[0].rating)
+      if (!!reviewObj.response) {
+        navigate('error');
+      }
+      if (!!reviewObj.data) {
+        setReviewCount(reviewObj.data.length);
+        if (Number(reviewObj.data.length) !== 1) {
+          setReviewAverage(
+            Math.round(
+              (reviewObj.data.reduce(
+                (x, y) => Number(x.rating) + Number(y.rating)
+              ) /
+                reviewObj.data.length) *
+                2
+            ) / 2
+          );
+        } else {
+          setReviewAverage(reviewObj.data[0].rating);
         }
       }
       setRecipe(recipeObj.data);
@@ -41,7 +49,7 @@ const Recipe = () => {
       setIsLoading(false);
     }
   };
-                           
+
   useEffect(() => {
     fetchRecipeById();
   }, []);
@@ -60,7 +68,7 @@ const Recipe = () => {
     difficulty,
     is_healthy,
     is_vegan,
-  } = selectedRecipe;
+  } = recipe;
 
   return (
     <>
@@ -77,10 +85,7 @@ const Recipe = () => {
               <h3>{name}</h3>
             </ListGroup.Item>
             <ListGroup.Item>
-              <Rating
-                value={reviewAverage}
-                text={`${reviewCount} reviews`}
-              />
+              <Rating value={reviewAverage} text={`${reviewCount} reviews`} />
               <Link
                 to={`/recipes/${id}/reviews`}
                 className="btn btn-primary mt-2"
