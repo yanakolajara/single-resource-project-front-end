@@ -38,6 +38,30 @@
     font-weight: bold;
 }
 
+#recipePageBackButton{
+    background-color: rgb(228, 228, 228);
+}
+#recipePageBackButton:hover{
+    background-color: rgb(192, 192, 192);
+}
+
+/** Recipe page */
+
+#recipePageImgCol{
+    display: flex;
+    justify-content: center;
+}
+
+#recipePageImg{
+    max-height: 500px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 5px black;
+}
+
+#recipePageReviewsButton:hover{
+    background-color: rgb(25, 81, 210);
+}
+
 
 /** Error page */
 
