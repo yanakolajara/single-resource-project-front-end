@@ -31,7 +31,9 @@ const Home = () => {
 
   return (
     <>
-      <RecipeCarousel recipes={recipes} />
+      <div id='carouselDiv'>
+        <RecipeCarousel recipes={recipes} id="carouselHomeElement"/>
+      </div>
       <h1>Favorite Recipes</h1>
       <Row>
         {recipes.map((recipe) => (

@@ -1,6 +1,15 @@
 /** Home page */
 
+/** Carousel */
 
+#carouselDiv{
+    display: flex;
+    justify-content: center;
+}
+
+#carouselElement{
+    width: 45%;
+}
 
 /** Error page */
 
