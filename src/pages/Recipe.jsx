@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 import { Row, Col, Image, ListGroup, Card } from 'react-bootstrap';
 
@@ -13,7 +13,6 @@ const Recipe = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [reviewCount, setReviewCount] = useState(0);
   const [reviewAverage, setReviewAverage] = useState(0);
-  const navigate = useNavigate();
 
   const { id } = useParams();
 
@@ -21,9 +20,7 @@ const Recipe = () => {
     try {
       let recipeObj = await getRecipeById(id);
       let reviewObj = await getRecipeReviews(id);
-      if (!!reviewObj.response) {
-        navigate('error');
-      }
+
       if (!!reviewObj.data) {
         setReviewCount(reviewObj.data.length);
         if (Number(reviewObj.data.length) !== 1) {
@@ -41,8 +38,6 @@ const Recipe = () => {
         }
       }
       setRecipe(recipeObj.data);
-      // console.log(result.data);
-
       setIsLoading(false);
     } catch (error) {
       console.log(error);

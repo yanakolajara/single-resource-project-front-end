@@ -1,42 +1,3 @@
-// import React from 'react';
-// import { Form } from 'react-bootstrap';
-
-// const ReviewForm = () => {
-//   return (
-//     <Form>
-//       <Form.Group className="mb-3" controlId="reviewer">
-//         <Form.Label>Name</Form.Label>
-//         <Form.Control type="text" placeholder="Enter Your Name" />
-//       </Form.Group>
-//       <Form.Group className="mb-3" controlId="content">
-//         <Form.Label>Recipe Name</Form.Label>
-//         <Form.Control type="text" placeholder="Recipe Title" />
-//       </Form.Group>
-
-//       <Form.Group className="mb-3">
-//         <Form.Label htmlFor="content">Review</Form.Label>
-//         <Form.Control
-//           as="textarea"
-//           rows={3}
-//           placeholder="Write Your Review Here..."
-//         />
-//       </Form.Group>
-//       <Form.Group className="mb-3">
-//         <Form.Label>Rating</Form.Label>
-//         <Form.Control
-//           type="number"
-//           placeholder="Enter Your Rating"
-//           min="0"
-//           max="5"
-//           step="1"
-//         />
-//       </Form.Group>
-//     </Form>
-//   );
-// };
-
-// export default ReviewForm;
-
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Form } from 'react-bootstrap';
@@ -54,7 +15,7 @@ const ReviewForm = ({
     title: '',
     content: '',
     rating: '',
-    bookmark_id: id,
+    recipe_id: id,
   });
   const handleSubmit = (event) => {
     event.preventDefault();
