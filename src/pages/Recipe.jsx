@@ -1,10 +1,12 @@
+
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+
 import { Row, Col, Image, ListGroup, Card } from 'react-bootstrap';
-// import Axios from 'axios';
 
 import Rating from '../components/Rating';
 import Loading from '../components/Loading';
+
 
 import { getRecipeById, getRecipeReviews } from '../Api/Api';
 
@@ -14,14 +16,10 @@ const Recipe = () => {
   const [reviewCount, setReviewCount] = useState(0);
   const [reviewAverage, setReviewAverage] = useState(0);
   const navigate = useNavigate();
+
   const { id } = useParams();
 
-  useEffect(() => {
-    fetchRecipeById();
-    // eslint-disable-next-line
-  }, []);
-
-  async function fetchRecipeById() {
+  const fetchRecipeById = async () => {
     try {
       let recipeObj = await getRecipeById(id);
       let reviewObj = await getRecipeReviews(id);
@@ -36,16 +34,33 @@ const Recipe = () => {
       }
       setRecipe(recipeObj.data);
       // console.log(result.data);
+
       setIsLoading(false);
     } catch (error) {
       console.log(error);
       setIsLoading(false);
     }
-  }
+  };
+                           
+  useEffect(() => {
+    fetchRecipeById();
+  }, []);
 
   if (isLoading) {
     return <Loading center />;
   }
+
+  const {
+    name,
+    photo,
+    description,
+    ingredients,
+    cuisine,
+    type,
+    difficulty,
+    is_healthy,
+    is_vegan,
+  } = selectedRecipe;
 
   return (
     <>
@@ -54,12 +69,12 @@ const Recipe = () => {
       </Link>
       <Row>
         <Col md={6}>
-          <Image src={recipe.photo} alt={recipe.name} fluid />
+          <Image src={photo} alt={name} fluid />
         </Col>
         <Col md={6}>
           <ListGroup variant="flush">
             <ListGroup.Item>
-              <h3>{recipe.name}</h3>
+              <h3>{name}</h3>
             </ListGroup.Item>
             <ListGroup.Item>
               <Rating
@@ -67,7 +82,7 @@ const Recipe = () => {
                 text={`${reviewCount} reviews`}
               />
               <Link
-                to={`/recipes/${recipe.id}/reviews`}
+                to={`/recipes/${id}/reviews`}
                 className="btn btn-primary mt-2"
               >
                 View Reviews
@@ -75,7 +90,7 @@ const Recipe = () => {
             </ListGroup.Item>
             <ListGroup.Item>
               <h5>Description:</h5>
-              <p>{recipe.description}</p>
+              <p>{description}</p>
             </ListGroup.Item>
           </ListGroup>
         </Col>
@@ -86,21 +101,21 @@ const Recipe = () => {
             <ListGroup variant="flush">
               <ListGroup.Item>
                 <h5>Ingredients:</h5>
-                <span>{recipe.ingredients}</span>
+                <span>{ingredients}</span>
               </ListGroup.Item>
               <ListGroup.Item>
                 <h5>
-                  Cuisine: <span>{recipe.cuisine}</span>
+                  Cuisine: <span>{cuisine}</span>
                 </h5>
               </ListGroup.Item>
               <ListGroup.Item>
                 <h5>
-                  Type: <span>{recipe.type}</span>
+                  Type: <span>{type}</span>
                 </h5>
               </ListGroup.Item>
               <ListGroup.Item>
                 <h5>
-                  Difficulty: <span>{recipe.difficulty}</span>
+                  Difficulty: <span>{difficulty}</span>
                 </h5>
               </ListGroup.Item>
               {/* <ListGroup.Item>
@@ -130,8 +145,8 @@ const Recipe = () => {
               </ListGroup.Item>
               <ListGroup.Item>
                 <h4>Properties:</h4>
-                <p>{recipe.is_healthy ? 'Healthy' : 'Not Healthy'}</p>
-                <p>{recipe.is_vegan ? 'Vegan' : 'Not Vegan'}</p>
+                <p>{is_healthy ? 'Healthy' : 'Not Healthy'}</p>
+                <p>{is_vegan ? 'Vegan' : 'Not Vegan'}</p>
               </ListGroup.Item>
             </ListGroup>
           </Card>

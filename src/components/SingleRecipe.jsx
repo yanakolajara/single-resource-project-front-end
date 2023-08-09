@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-
 import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 import Rating from './Rating';
 import { getRecipeReviews } from '../Api/Api';
+
 
 const SingleRecipe = ({ recipe }) => {
   const [reviewCount, setReviewCount] = useState(0);
@@ -31,21 +31,25 @@ const SingleRecipe = ({ recipe }) => {
 
   return (
     <Card className="my-3 p-3 rounded">
-      <Link to={`/recipes/${recipe.id}`}>
+      <Link to={`/recipes/${id}`} className="m-1">
         <Card.Img
-          src={recipe.photo}
+          src={photo}
           alt="recipe-image"
           variant="top"
-          style={{ width: '250px', height: '250px' }}
+          className="object-fit-cover"
+          style={{
+            width: '270px',
+            height: '250px',
+          }}
         />
       </Link>
       <Card.Body>
-        <Link to={`/recipes/${recipe.id}`}>
+        <Link to={`/recipes/${id}`}>
           <Card.Title as="div" className="recipe-title">
-            {recipe.name}
+            {name}
           </Card.Title>
         </Link>
-        <Card.Text as="p">Type: {recipe.type}</Card.Text>
+        <Card.Text as="p">Type: {type}</Card.Text>
         <Card.Text as="div">
           <Rating
             value={reviewAverage}

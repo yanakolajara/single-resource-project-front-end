@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-const errorImage = require('../Media/errorCode.jpeg')
+const errorImage = require('../Media/errorCode.jpeg');
 
 function NotFound(){
     const navigate = useNavigate()
@@ -14,6 +14,7 @@ function NotFound(){
             >Home</button>
         </div>
     )
+
 }
 
 export default NotFound;
