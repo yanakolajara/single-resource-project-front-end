@@ -1,8 +1,7 @@
 import React from 'react';
 import { Carousel, Image } from 'react-bootstrap';
-import { recipes } from '../recipe';
 
-const RecipeCarousel = () => {
+const RecipeCarousel = ({ recipes }) => {
   return (
     <Carousel pause="hover" className="bg-warning mb-4">
       {recipes.map((recipe) => (
