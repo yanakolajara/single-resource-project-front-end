@@ -3,7 +3,7 @@ import { Carousel, Image } from 'react-bootstrap';
 
 const RecipeCarousel = ({ recipes }) => {
   return (
-    <Carousel pause="hover" className="bg-warning mb-4">
+    <Carousel pause="hover" className="bg-warning mb-4" id='carouselElement'>
       {recipes.map((recipe) => (
         <Carousel.Item key={recipe.id}>
           <Image
