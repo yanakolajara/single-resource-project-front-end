@@ -36,7 +36,7 @@ const Home = () => {
       <Row>
         {recipes.map((recipe) => (
           <Col sm={12} md={6} lg={4} xl={3} key={recipe.id}>
-            <SingleRecipe {...recipe} />
+            <SingleRecipe recipe={recipe} />
           </Col>
         ))}
       </Row>
