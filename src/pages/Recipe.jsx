@@ -1,35 +1,52 @@
-import React, { useEffect, useCallback } from 'react';
-import { useParams, Link } from 'react-router-dom';
+
+import React, { useState, useEffect } from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+
 import { Row, Col, Image, ListGroup, Card } from 'react-bootstrap';
 
 import Rating from '../components/Rating';
 import Loading from '../components/Loading';
 
-import { getRecipeById } from '../Api/Api';
-import { useAppContext } from '../context/AppContext';
+
+import { getRecipeById, getRecipeReviews } from '../Api/Api';
 
 const Recipe = () => {
-  const { selectedRecipe, setSelectedRecipe, setIsLoading } = useAppContext();
+  const [recipe, setRecipe] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [reviewCount, setReviewCount] = useState(0);
+  const [reviewAverage, setReviewAverage] = useState(0);
+  const navigate = useNavigate();
 
   const { id } = useParams();
 
-  const fetchRecipeById = useCallback(async () => {
+  const fetchRecipeById = async () => {
     try {
-      let result = await getRecipeById(id);
+      let recipeObj = await getRecipeById(id);
+      let reviewObj = await getRecipeReviews(id);
+      if(!!reviewObj.response){navigate('error')}
+      if(!!reviewObj.data){
+        setReviewCount(reviewObj.data.length)
+        if(Number(reviewObj.data.length) !== 1){
+          setReviewAverage(Math.round((reviewObj.data.reduce((x,y) => Number(x.rating) + Number(y.rating)) / reviewObj.data.length) * 2) / 2)
+        }else{
+          setReviewAverage(reviewObj.data[0].rating)
+        }
+      }
+      setRecipe(recipeObj.data);
+      // console.log(result.data);
 
-      setSelectedRecipe(result.data);
       setIsLoading(false);
     } catch (error) {
       console.log(error);
       setIsLoading(false);
     }
-  }, [id, setSelectedRecipe, setIsLoading]);
-
+  };
+                           
   useEffect(() => {
     fetchRecipeById();
-  }, [fetchRecipeById]);
+  }, []);
 
-  if (!selectedRecipe) {
+  if (isLoading) {
     return <Loading center />;
   }
 
@@ -61,8 +78,8 @@ const Recipe = () => {
             </ListGroup.Item>
             <ListGroup.Item>
               <Rating
-              // value={selectedRecipe.rating}
-              // text= {`{selectedRecipe.numOfReviews} reviews`}
+                value={reviewAverage}
+                text={`${reviewCount} reviews`}
               />
               <Link
                 to={`/recipes/${id}/reviews`}
