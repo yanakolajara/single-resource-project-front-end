@@ -31,7 +31,7 @@ const Home = () => {
 
   return (
     <>
-      <RecipeCarousel />
+      <RecipeCarousel recipes={recipes} />
       <h1>Favorite Recipes</h1>
       <Row>
         {recipes.map((recipe) => (
