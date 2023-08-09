@@ -29,4 +29,14 @@ async function getRecipeReviews(id) {
   }
 }
 
-export { getAllRecipes, getRecipeById, getRecipeReviews };
+async function getAllReviews(id) {
+  try {
+    let result = await Axios.get(`/reviews`);
+
+    return result;
+  } catch (e) {
+    return e;
+  }
+}
+
+export { getAllRecipes, getRecipeById, getRecipeReviews, getAllReviews };
