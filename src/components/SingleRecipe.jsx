@@ -20,8 +20,6 @@ const SingleRecipe = ({ recipe }) => {
           setReviewAverage(reviewObj.data[0].rating)
         }
       }
-      console.log(reviewCount)
-      console.log(reviewAverage)
     } catch (error) {
       console.log(error);
     }
