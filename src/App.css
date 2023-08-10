@@ -92,3 +92,19 @@
     height: 33px;
     background-color: rgb(209, 209, 209);
 }
+
+/** Reviews */
+
+#reviewCard{
+    box-shadow: 1px 1px 5px black;
+}
+
+#removeReviewButton{
+    background-color: rgb(243, 73, 73);
+    border: 0;
+}
+
+#reviewEditSubmitButton{
+    background-color: rgb(127,189,101);
+    border: 0;
+}
