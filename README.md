@@ -36,3 +36,5 @@ Welcome to the Recipe App! This web application allows users to view a list of r
 - [Single Recipe Review Wireframe](/src/erd-wireframes/single-review.png)
 - [Contacts Wireframe](/src/erd-wireframes/contact.png)
 - [Edit Recipe Form Wireframe](/src/erd-wireframes/edit-form.png)
+- [Front-end Repository](https://github.com/yanakolajara/single-resource-project-front-end)
+- [Back-end Repository](https://github.com/yanakolajara/single-resource-project-back-end)
