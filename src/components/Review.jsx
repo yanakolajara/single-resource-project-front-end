@@ -46,7 +46,7 @@ const Review = ({
             <Card.Title className="text-secondary">{reviewer}</Card.Title>
           </div>
           <div className="mb-3">
-            <Rating value={rating} text={`${rating} reviews`} />
+            <Rating value={rating} text={`${rating} stars`} />
           </div>
           <Card.Title className="text-secondary">{title}</Card.Title>
           {isEditing ? (
