@@ -1,13 +1,13 @@
 p, span {
   max-width: 40em;
-  text-transform: capitalize;
+  text-transform: none;
 }
 
 h1,
 h2,
 h3,
 h4,
-h5 {
+h5{
   margin: 0;
   line-height: 1.3;
   text-transform: capitalize;
@@ -40,9 +40,9 @@ small {
 }
 
 
-/* main {
+main {
     min-height: 90vh;
-  } */
+  }
 
   a {
     text-decoration: none;
