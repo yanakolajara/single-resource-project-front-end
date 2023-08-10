@@ -1,22 +1,23 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Container, Row } from 'react-bootstrap';
+import { useParams, Link } from 'react-router-dom';
+import { Container, Row, Button } from 'react-bootstrap';
+
+import { Review, ReviewForm } from '../components';
+
+import { useAppContext } from '../context/AppContext';
 import {
   getRecipeReviews,
   deleteRecipeReview,
   updateRecipeReview,
+  createRecipeReview,
 } from '../Api/Api';
-import Review from './Review';
-import { useAppContext } from '../context/AppContext';
 
 const Reviews = () => {
   const { reviews, setReviews } = useAppContext();
   let { id } = useParams();
-  console.log(id);
-
-  console.log(reviews);
 
   const [editingReviewId, setEditingReviewId] = useState(null);
+  const [addingReview, setAddingReview] = useState(false);
 
   const handleEditReview = (reviewId) => {
     setEditingReviewId(reviewId);
@@ -43,6 +44,15 @@ const Reviews = () => {
   useEffect(() => {
     fetchRecipeReview();
   }, [fetchRecipeReview]);
+
+  async function handleAdd(newReview) {
+    try {
+      let result = await createRecipeReview(id, newReview);
+      setReviews([result.data, ...reviews]);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   async function handleDeleteClick(id) {
     try {
@@ -76,23 +86,44 @@ const Reviews = () => {
   return (
     <Container className="py-5">
       <h1>Reviews</h1>
+      <Link to={`/recipes/${id}`} className="btn btn-secondary my-3">
+        Go Back
+      </Link>
       <Row className="m-5">
-        {reviews ? (
-          reviews.map((review) => (
-            <div key={review.id}>
-              <Review
-                {...review}
-                handleDeleteClick={handleDeleteClick}
-                handleEditRecipeReview={handleEditRecipeReview}
-                handleEditReview={handleEditReview}
-                isEditing={editingReviewId === review.id}
-                onSubmitReview={handleReviewFormSubmit}
-                fetchRecipeReview={fetchRecipeReview}
-              />
-            </div>
-          ))
+        {addingReview ? (
+          <ReviewForm
+            handleAddClick={() => setAddingReview(false)}
+            handleAdd={handleAdd}
+          />
         ) : (
-          <h1>No Reviews For This Recipe!</h1>
+          <>
+            {reviews ? (
+              reviews.map((review) => (
+                <div key={review.id}>
+                  <Review
+                    {...review}
+                    handleDeleteClick={handleDeleteClick}
+                    handleEditRecipeReview={handleEditRecipeReview}
+                    handleEditReview={handleEditReview}
+                    isEditing={editingReviewId === review.id}
+                    onSubmitReview={handleReviewFormSubmit}
+                    fetchRecipeReview={fetchRecipeReview}
+                    handleAdd={handleAdd}
+                    handleAddClick={() => setAddingReview(true)}
+                  />
+                  <hr />
+                </div>
+              ))
+            ) : (
+              <>
+                <h1>No Reviews For This Recipe!</h1>
+                <p>Be the first to review this recipe!</p>
+                <Button onClick={() => setAddingReview(true)}>
+                  Add Review
+                </Button>
+              </>
+            )}
+          </>
         )}
       </Row>
     </Container>

@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
-import Rating from './Rating';
+
+import { Rating } from '.';
 import { getRecipeReviews } from '../Api/Api';
 
 const SingleRecipe = ({ recipe }) => {
   const [reviewCount, setReviewCount] = useState(0);
   const [reviewAverage, setReviewAverage] = useState(0);
 
-  const fetchReviews = async () => {
+  const fetchReviews = useCallback(async () => {
     try {
       let reviewObj = await getRecipeReviews(String(recipe.id));
       if (!!reviewObj.data) {
@@ -30,11 +31,11 @@ const SingleRecipe = ({ recipe }) => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [recipe.id]);
 
   useEffect(() => {
     fetchReviews();
-  }, []);
+  }, [fetchReviews]);
 
   return (
     <Card className="my-3 p-3 rounded" id='singleRecipeCard'>
@@ -59,7 +60,9 @@ const SingleRecipe = ({ recipe }) => {
         </Link>
         <Card.Text as="p" id='singleRecipeType'>Type: {recipe.type}</Card.Text>
         <Card.Text as="div">
-          <Rating value={reviewAverage} text={`${reviewCount} reviews`} />
+          <Link to={`recipes/${recipe.id}/reviews`}>
+            <Rating value={reviewAverage} text={`${reviewCount} reviews`} />
+          </Link>
         </Card.Text>
       </Card.Body>
     </Card>

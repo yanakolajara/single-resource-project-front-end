@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
-
 import { Row, Col, Image, ListGroup, Card } from 'react-bootstrap';
 
-import Rating from '../components/Rating';
-import Loading from '../components/Loading';
+import { Rating, Loading } from '../components';
 
 import { getRecipeById, getRecipeReviews } from '../Api/Api';
 
@@ -16,7 +14,7 @@ const Recipe = () => {
 
   const { id } = useParams();
 
-  const fetchRecipeById = async () => {
+  const fetchRecipeById = useCallback(async () => {
     try {
       let recipeObj = await getRecipeById(id);
       let reviewObj = await getRecipeReviews(id);
@@ -43,11 +41,12 @@ const Recipe = () => {
       console.log(error);
       setIsLoading(false);
     }
-  };
+  }, [id]);
 
   useEffect(() => {
     fetchRecipeById();
-  }, []);
+  }, [fetchRecipeById]);
+  console.log(recipe);
 
   if (isLoading) {
     return <Loading center />;
@@ -63,6 +62,11 @@ const Recipe = () => {
     difficulty,
     is_healthy,
     is_vegan,
+    carbohydrates,
+    calories,
+    fat,
+    protein,
+    sugar,
   } = recipe;
 
   return (
@@ -74,6 +78,7 @@ const Recipe = () => {
         <Col md={6} id='recipePageImgCol'>
           <Image src={photo} alt={name} id='recipePageImg'fluid />
         </Col>
+
         <Col md={6}>
           <ListGroup variant="flush">
             <ListGroup.Item>
@@ -89,65 +94,76 @@ const Recipe = () => {
                 View Reviews
               </Link>
             </ListGroup.Item>
-            <ListGroup.Item>
+            <ListGroup.Item className="mb-3">
               <h5>Description:</h5>
               <p>{description}</p>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <h5>Ingredients:</h5>
+              <span>{ingredients}</span>
             </ListGroup.Item>
           </ListGroup>
         </Col>
       </Row>
       <Row className="my-4">
         <Col md={6} className="my-2">
-          <Card>
+          <Card className="h-100">
             <ListGroup variant="flush">
               <ListGroup.Item>
-                <h5>Ingredients:</h5>
-                <span>{ingredients}</span>
-              </ListGroup.Item>
-              <ListGroup.Item>
-                <h5>
+                <p>
                   Cuisine: <span>{cuisine}</span>
-                </h5>
+                </p>
               </ListGroup.Item>
               <ListGroup.Item>
-                <h5>
+                <p>
                   Type: <span>{type}</span>
-                </h5>
+                </p>
               </ListGroup.Item>
               <ListGroup.Item>
-                <h5>
+                <p>
                   Difficulty: <span>{difficulty}</span>
-                </h5>
+                </p>
               </ListGroup.Item>
-              {/* <ListGroup.Item>
-                <h5>
-                  Cooking Time: <span>{recipe.cookingTime}</span>
-                </h5>
-              </ListGroup.Item> */}
+              <ListGroup.Item>
+                <h5>Facts:</h5>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <p>{is_healthy ? 'Healthy' : 'Not Healthy'}</p>
+                <p>{is_vegan ? 'Vegan' : 'Not Vegan'}</p>
+              </ListGroup.Item>
             </ListGroup>
           </Card>
         </Col>
         <Col className="my-2">
-          <Card>
+          <Card className="h-100">
             <ListGroup>
               <ListGroup.Item>
-                <h5>Nutrition Facts</h5>
+                <h5>Nutrition Stats:</h5>
               </ListGroup.Item>
               <ListGroup.Item>
                 <p>
-                  Lorem ipsum dolor sit amet. A doloribus cupiditate non laborum
-                  sint sit laudantium reprehenderit ab officiis tempore sit
-                  natus itaque qui libero facere et blanditiis voluptatibus! Eum
-                  impedit Quis est sunt eaque ut similique iusto est quos velit
-                  33 possimus dignissimos sed galisum nesciunt nam repudiandae
-                  similique. Rem quis facere ea laboriosam sint et odit expedita
-                  sed dolorem veritatis.
+                  Calories: <span>{calories}</span>
                 </p>
               </ListGroup.Item>
               <ListGroup.Item>
-                <h4>Properties:</h4>
-                <p>{is_healthy ? 'Healthy' : 'Not Healthy'}</p>
-                <p>{is_vegan ? 'Vegan' : 'Not Vegan'}</p>
+                <p>
+                  Carbs: <span>{carbohydrates}</span>
+                </p>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <p>
+                  Fat: <span>{fat}</span>
+                </p>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <p>
+                  Protein: <span>{protein}</span>
+                </p>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <p>
+                  Sugar: <span>{sugar}</span>
+                </p>
               </ListGroup.Item>
             </ListGroup>
           </Card>

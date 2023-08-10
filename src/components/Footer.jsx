@@ -1,30 +1,15 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
 
 const Footer = () => {
   return (
     <footer>
-      <Container>
-        <Row className="py-3">
-          <Col>
-            <p>Recipe</p>
-          </Col>
-          <Col>
-            <p>&copy; {new Date().getFullYear()}</p>
-          </Col>
-          <Col>
-            <a href="/">Home</a>
-          </Col>
-          <Col>
-            <a href="/about">About</a>
-          </Col>
-          <Col>
-            <a href="/features">Features</a>
-          </Col>
-          <Col>
-            <a href="/contacts">Contact</a>
-          </Col>
-        </Row>
+      <Container className="py-2 bg-dark d-flex justify-content-around" fluid>
+        <p className="text-white">Recipe</p>
+        <p className="text-white">&copy; {new Date().getFullYear()}</p>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
       </Container>
     </footer>
   );

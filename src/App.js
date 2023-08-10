@@ -1,32 +1,28 @@
-import './App.css';
-import {} from 'react-router-dom';
+import { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import Recipe from './pages/Recipe';
-import About from './pages/About';
-import Contacts from './pages/Contacts';
-import NotFound from './pages/NotFound';
-import Reviews from './components/Reviews';
+
+import { Header, Loading, Footer } from './components';
+import { Recipe, Reviews, Home, Contacts, NotFound, About } from './pages';
 
 function App() {
   return (
     <>
       <Header />
-      <main className="py-3">
-        <Container>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/recipes/:id" element={<Recipe />} />
-            <Route path="/recipes/:id/reviews" element={<Reviews />} />
-            <Route path="/about" element={<About />} />
-            <Route path="contacts" element={<Contacts />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Container>
-      </main>
+      <Suspense fallback={<Loading />}>
+        <main className="py-3">
+          <Container>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/recipes/:id" element={<Recipe />} />
+              <Route path="/recipes/:id/reviews" element={<Reviews />} />
+              <Route path="/about" element={<About />} />
+              <Route path="contacts" element={<Contacts />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Container>
+        </main>
+      </Suspense>
       <Footer />
     </>
   );

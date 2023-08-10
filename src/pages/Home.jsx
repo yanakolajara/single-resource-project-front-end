@@ -1,8 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import { Row, Col } from 'react-bootstrap';
-import SingleRecipe from '../components/SingleRecipe';
-import RecipeCarousel from '../components/RecipeCarousel';
-import Loading from '../components/Loading';
+
+import { SingleRecipe, RecipeCarousel, Loading } from '../components';
 
 import { useAppContext } from '../context/AppContext';
 import { getAllRecipes } from '../Api/Api';
@@ -35,7 +34,7 @@ const Home = () => {
         <RecipeCarousel recipes={recipes} id="carouselHomeElement"/>
       </div>
       <h1>Favorite Recipes</h1>
-      <Row>
+      <Row className="d-flex align-items-center justify-content-center mb-5">
         {recipes.map((recipe) => (
           <Col sm={12} md={6} lg={4} xl={3} key={recipe.id}>
             <SingleRecipe recipe={recipe} />
