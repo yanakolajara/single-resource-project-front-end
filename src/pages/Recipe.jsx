@@ -77,6 +77,7 @@ const Recipe = () => {
       <Row>
         <Col md={6} id="recipePageImgCol">
           <Image
+            className="object-fit-cover rounded"
             src={photo}
             alt={name}
             id="recipePageImg"
