@@ -8,8 +8,8 @@ const Footer = () => {
       <Container className="py-2 bg-dark d-flex justify-content-around" fluid>
         <p className="text-white">Recipe</p>
         <p className="text-white">&copy; {new Date().getFullYear()}</p>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
+        <Link to="/" style={{margin: '0px 20px 0px 0px'}}>Home</Link>
+        <Link to="/about" style={{margin: '0px 20px 0px 0px'}}>About</Link>
       </Container>
     </footer>
   );
