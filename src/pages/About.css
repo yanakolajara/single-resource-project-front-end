@@ -1,0 +1,21 @@
+
+
+h1,
+h2{
+    text-align: center;
+}
+h2{
+    padding: 50px;
+}
+p{
+    font-size: 24px;
+    text-align: center;
+    margin: 25px auto;
+}
+ul li{
+   
+    text-align: center;
+    list-style: none;
+    font-size: 22px;
+}
+
