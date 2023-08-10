@@ -1,6 +1,6 @@
 p, span {
   max-width: 40em;
-  text-transform: none;
+  text-transform: capitalize;
 }
 
 h1,
