@@ -30,8 +30,8 @@ const Home = () => {
 
   return (
     <>
-      <div id='carouselDiv'>
-        <RecipeCarousel recipes={recipes} id="carouselHomeElement"/>
+      <div>
+        <RecipeCarousel recipes={recipes}/>
       </div>
       <h1>Favorite Recipes</h1>
       <Row className="d-flex align-items-center justify-content-center mb-5">
