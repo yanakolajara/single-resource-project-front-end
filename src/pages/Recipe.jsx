@@ -71,12 +71,18 @@ const Recipe = () => {
 
   return (
     <>
-      <Link to="/" className="btn btn-light my-3" id='recipePageBackButton'>
+      <Link to="/" className="btn btn-light my-3" id="recipePageBackButton">
         Go Back
       </Link>
       <Row>
-        <Col md={6} id='recipePageImgCol'>
-          <Image src={photo} alt={name} id='recipePageImg'fluid />
+        <Col md={6} id="recipePageImgCol">
+          <Image
+            src={photo}
+            alt={name}
+            id="recipePageImg"
+            fluid
+            style={{ height: '500px', width: '600px' }}
+          />
         </Col>
 
         <Col md={6}>
@@ -89,7 +95,7 @@ const Recipe = () => {
               <Link
                 to={`/recipes/${id}/reviews`}
                 className="btn btn-primary mt-2"
-                id='recipePageReviewsButton'
+                id="recipePageReviewsButton"
               >
                 View Reviews
               </Link>
