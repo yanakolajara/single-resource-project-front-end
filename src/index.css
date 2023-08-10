@@ -1,6 +1,48 @@
-main {
-    min-height: 85vh;
-  }
+p, span {
+  max-width: 40em;
+  text-transform: capitalize;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  line-height: 1.3;
+  text-transform: capitalize;
+  letter-spacing: .15rem;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 3.052rem;
+}
+
+h2 {
+  font-size: 2.441rem;
+}
+
+h3 {
+  font-size: 1.953rem;
+}
+
+h4 {
+  font-size: 1.563rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+small {
+  font-size: 0.875rem;
+}
+
+
+/* main {
+    min-height: 90vh;
+  } */
 
   a {
     text-decoration: none;
@@ -16,11 +58,16 @@ main {
   }
   
   .rating-text {
+    color: #FFA534;
     font-size: 0.8rem;
     font-weight: 600;
     padding-left: 0.5rem;
+    text-decoration: underline;
+    cursor: pointer;
   }
-
+  .rating-text:hover {
+    color: #f78b06;
+  }
   .recipe-title {
     height: 1.5em;
     color: gray;
@@ -117,4 +164,11 @@ main {
       -webkit-transform: rotate(360deg);
       transform: rotate(360deg);
     }
+  }
+
+  hr {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 2px solid rgba(0, 0, 0, 0.6);
   }

@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
-import Rating from './Rating';
+
+import { Rating } from '.';
 import { getRecipeReviews } from '../Api/Api';
 
 const SingleRecipe = ({ recipe }) => {
   const [reviewCount, setReviewCount] = useState(0);
   const [reviewAverage, setReviewAverage] = useState(0);
 
-  const fetchReviews = async () => {
+  const fetchReviews = useCallback(async () => {
     try {
       let reviewObj = await getRecipeReviews(String(recipe.id));
       if (!!reviewObj.data) {
@@ -30,20 +31,20 @@ const SingleRecipe = ({ recipe }) => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [recipe.id]);
 
   useEffect(() => {
     fetchReviews();
-  }, []);
+  }, [fetchReviews]);
 
   return (
-    <Card className="my-3 p-3 rounded">
-      <Link to={`/recipes/${recipe.id}`} className="m-1">
+    <Card className="my-3 p-3 rounded h-100">
+      <Link to={`/recipes/${recipe.id}`}>
         <Card.Img
           src={recipe.photo}
           alt="recipe-image"
           variant="top"
-          className="object-fit-cover"
+          className="rounded object-fit-cover img-fluid w-100"
           style={{
             width: '270px',
             height: '250px',
@@ -52,13 +53,17 @@ const SingleRecipe = ({ recipe }) => {
       </Link>
       <Card.Body>
         <Link to={`/recipes/${recipe.id}`}>
-          <Card.Title as="div" className="recipe-title">
+          <Card.Title as="h5" className="recipe-title">
             {recipe.name}
           </Card.Title>
         </Link>
-        <Card.Text as="p">Type: {recipe.type}</Card.Text>
+        <Card.Text as="h6" className="text-secondary">
+          Type: {recipe.type}
+        </Card.Text>
         <Card.Text as="div">
-          <Rating value={reviewAverage} text={`${reviewCount} reviews`} />
+          <Link to={`recipes/${recipe.id}/reviews`}>
+            <Rating value={reviewAverage} text={`${reviewCount} reviews`} />
+          </Link>
         </Card.Text>
       </Card.Body>
     </Card>

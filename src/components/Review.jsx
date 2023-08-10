@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Container, Card, Button } from 'react-bootstrap';
-import { FaUserCircle } from 'react-icons/fa';
-import Rating from './Rating';
-import ReviewForm from './ReviewForm';
+import { FaRegUser } from 'react-icons/fa';
+
+import { Rating, ReviewForm } from '.';
 
 const Review = ({
   id,
@@ -15,8 +15,10 @@ const Review = ({
   fetchRecipeReview,
   isEditing,
   onSubmitReview,
+  handleAddClick,
+  handleAdd,
 }) => {
-  const [editedReview, setEditedReview] = useState({
+  const [editedReview] = useState({
     id,
     reviewer,
     title,
@@ -32,22 +34,14 @@ const Review = ({
     handleEditReview(null);
   };
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setEditedReview((prevReview) => ({
-      ...prevReview,
-      [name]: value,
-    }));
-  };
-
   return (
     <Container>
-      <Card border="light" className="mb-5">
+      <Card border="light" className="my-3 p-3 h-100">
         <Card.Body>
           <div className="d-flex align-items-center mb-3">
-            <FaUserCircle
-              className="rounded"
-              style={{ width: '60px', height: '60px', marginRight: '10px' }}
+            <FaRegUser
+              className="rounded-circle text-light bg-secondary p-1"
+              style={{ width: '40px', height: '40px', marginRight: '10px' }}
             />
             <Card.Title className="text-secondary">{reviewer}</Card.Title>
           </div>
@@ -58,36 +52,27 @@ const Review = ({
           {isEditing ? (
             <ReviewForm
               review={editedReview}
-              onCancelEdit={handleCancelEdit}
               onSubmitReview={onSubmitReview}
-              onInputChange={handleInputChange}
               updateReviewsCallback={fetchRecipeReview}
+              isEditing={isEditing}
+              handleAdd={handleAdd}
             />
           ) : (
             <Card.Text>{content}</Card.Text>
           )}
           <div
-            className="d-flex justify-content-end"
+            className="d-flex justify-content-center"
             style={{ marginRight: '5rem' }}
           >
             {isEditing ? (
-              <>
-                <Button
-                  variant="primary"
-                  className="mr-2"
-                  style={{ marginRight: '1rem' }}
-                  onClick={handleCancelEdit}
-                >
-                  Cancel
-                </Button>
-                {/* <Button
-                  type="submit"
-                  className="btn btn-primary"
-                  style={{ marginRight: '1rem' }}
-                >
-                  Save
-                </Button> */}
-              </>
+              <Button
+                variant="danger"
+                className="mr-2"
+                style={{ marginRight: '1rem' }}
+                onClick={handleCancelEdit}
+              >
+                Cancel
+              </Button>
             ) : (
               <Button
                 variant="primary"
@@ -98,12 +83,21 @@ const Review = ({
                 Edit
               </Button>
             )}
+
             <Button
-              variant="primary"
+              variant="danger"
               onClick={() => handleDeleteClick(id)}
               disabled={isEditing}
             >
               Remove
+            </Button>
+            <Button
+              variant="success"
+              className="mr-2"
+              style={{ marginLeft: '1rem' }}
+              onClick={() => handleAddClick(id)}
+            >
+              Add
             </Button>
           </div>
         </Card.Body>
