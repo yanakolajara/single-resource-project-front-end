@@ -66,7 +66,7 @@ const ReviewForm = ({
         />
       </Form.Group>
       <div className="d-flex justify-content-end">
-        <button type="submit" className="btn btn-primary mr-2">
+        <button type="submit" className="btn btn-primary mr-2" id='reviewEditSubmitButton'>
           Save
         </button>
       </div>
