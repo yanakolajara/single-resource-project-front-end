@@ -40,17 +40,19 @@ const SingleRecipe = ({ recipe }) => {
   return (
     <Card className="my-3 p-3 rounded" id="singleRecipeCard">
       <Link to={`/recipes/${recipe.id}`} className="m-1">
-        <Card.Img
-          src={recipe.photo}
-          alt="recipe-image"
-          variant="top"
-          className="object-fit-cover"
-          id="singleRecipeImg"
-          style={{
-            width: '270px',
-            height: '250px',
-          }}
-        />
+        <div id="singleRecipeImageDiv">
+          <Card.Img
+            src={recipe.photo}
+            alt="recipe-image"
+            variant="top"
+            className="object-fit-cover"
+            id="singleRecipeImg"
+            style={{
+              width: '95%',
+              height: '250px',
+            }}
+          />
+        </div>
       </Link>
       <Card.Body>
         <Link to={`/recipes/${recipe.id}`}>

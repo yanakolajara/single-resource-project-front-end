@@ -23,6 +23,11 @@
     transition: .18s;
 }
 
+#singleRecipeImageDiv{
+    display: flex;
+    justify-content: center;
+}
+
 #singleRecipeCard:hover{
     background-color: rgb(225, 225, 225);
     cursor: pointer;
