@@ -38,13 +38,14 @@ const SingleRecipe = ({ recipe }) => {
   }, [fetchReviews]);
 
   return (
-    <Card className="my-3 p-3 rounded h-100">
-      <Link to={`/recipes/${recipe.id}`}>
+    <Card className="my-3 p-3 rounded" id='singleRecipeCard'>
+      <Link to={`/recipes/${recipe.id}`} className="m-1">
         <Card.Img
           src={recipe.photo}
           alt="recipe-image"
           variant="top"
-          className="rounded object-fit-cover img-fluid w-100"
+          className="object-fit-cover"
+          id='singleRecipeImg'
           style={{
             width: '270px',
             height: '250px',
@@ -53,13 +54,11 @@ const SingleRecipe = ({ recipe }) => {
       </Link>
       <Card.Body>
         <Link to={`/recipes/${recipe.id}`}>
-          <Card.Title as="h5" className="recipe-title">
+          <Card.Title as="div" className="recipe-title" id='singleRecipeName'>
             {recipe.name}
           </Card.Title>
         </Link>
-        <Card.Text as="h6" className="text-secondary">
-          Type: {recipe.type}
-        </Card.Text>
+        <Card.Text as="p" id='singleRecipeType'>Type: {recipe.type}</Card.Text>
         <Card.Text as="div">
           <Link to={`recipes/${recipe.id}/reviews`}>
             <Rating value={reviewAverage} text={`${reviewCount} reviews`} />

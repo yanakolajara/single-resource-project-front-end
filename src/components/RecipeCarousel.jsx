@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const RecipeCarousel = ({ recipes }) => {
   return (
-    <Carousel pause="hover" className="bg-warning my-5">
+    <Carousel pause="hover" className="bg-warning mb-4" id='carouselElement'>
       {recipes.map((recipe) => (
         <Carousel.Item key={recipe.id}>
           <Link to={`recipes/${recipe.id}`}>

@@ -2,6 +2,67 @@
 
 
 
+/** Carousel */
+
+#carouselDiv{
+    display: flex;
+    justify-content: center;
+}
+
+#carouselElement{
+    width: 45%;
+    box-shadow: 1px 1px 3px black;
+}
+
+/** Single recipe */
+
+#singleRecipeCard{
+    background-color: rgb(247, 247, 247);
+    border: 0;
+    box-shadow: .1px .1px 2px black;
+    transition: .18s;
+}
+
+#singleRecipeCard:hover{
+    background-color: rgb(225, 225, 225);
+    cursor: pointer;
+}
+
+#singleRecipeImg{
+    border: 1px solid rgb(144, 144, 144);
+    border-radius: 10px;
+}
+
+#singleRecipeName{
+    color: black;
+    font-weight: bold;
+}
+
+#recipePageBackButton{
+    background-color: rgb(228, 228, 228);
+}
+#recipePageBackButton:hover{
+    background-color: rgb(192, 192, 192);
+}
+
+/** Recipe page */
+
+#recipePageImgCol{
+    display: flex;
+    justify-content: center;
+}
+
+#recipePageImg{
+    max-height: 500px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 5px black;
+}
+
+#recipePageReviewsButton:hover{
+    background-color: rgb(25, 81, 210);
+}
+
+
 /** Error page */
 
 #notFoundDiv{
@@ -30,4 +91,20 @@
     width: 125px;
     height: 33px;
     background-color: rgb(209, 209, 209);
+}
+
+/** Reviews */
+
+#reviewCard{
+    box-shadow: 1px 1px 5px black;
+}
+
+#removeReviewButton{
+    background-color: rgb(243, 73, 73);
+    border: 0;
+}
+
+#reviewEditSubmitButton{
+    background-color: rgb(127,189,101);
+    border: 0;
 }

@@ -71,12 +71,12 @@ const Recipe = () => {
 
   return (
     <>
-      <Link to="/" className="btn btn-light my-3">
+      <Link to="/" className="btn btn-light my-3" id='recipePageBackButton'>
         Go Back
       </Link>
       <Row>
-        <Col md={6}>
-          <Image src={photo} alt={name} fluid />
+        <Col md={6} id='recipePageImgCol'>
+          <Image src={photo} alt={name} id='recipePageImg'fluid />
         </Col>
 
         <Col md={6}>
@@ -84,9 +84,14 @@ const Recipe = () => {
             <ListGroup.Item>
               <h3>{name}</h3>
             </ListGroup.Item>
-            <ListGroup.Item className="mb-3">
-              <Link to={`/recipes/${recipe.id}/reviews`}>
-                <Rating value={reviewAverage} text={`${reviewCount} reviews`} />
+            <ListGroup.Item>
+              <Rating value={reviewAverage} text={`${reviewCount} reviews`} />
+              <Link
+                to={`/recipes/${id}/reviews`}
+                className="btn btn-primary mt-2"
+                id='recipePageReviewsButton'
+              >
+                View Reviews
               </Link>
             </ListGroup.Item>
             <ListGroup.Item className="mb-3">

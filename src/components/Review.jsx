@@ -36,7 +36,7 @@ const Review = ({
 
   return (
     <Container>
-      <Card border="light" className="my-3 p-3 h-100">
+      <Card border="light" className="mb-5" id='reviewCard'>
         <Card.Body>
           <div className="d-flex align-items-center mb-3">
             <FaRegUser
@@ -88,6 +88,7 @@ const Review = ({
               variant="danger"
               onClick={() => handleDeleteClick(id)}
               disabled={isEditing}
+              id='removeReviewButton'
             >
               Remove
             </Button>
