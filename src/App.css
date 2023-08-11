@@ -44,6 +44,7 @@
 }
 
 #recipePageBackButton{
+    border: 1px solid rgb(206, 206, 206);
     background-color: rgb(228, 228, 228);
 }
 #recipePageBackButton:hover{
@@ -101,7 +102,7 @@
 /** Reviews */
 
 #reviewCard{
-    box-shadow: 1px 1px 5px black;
+    box-shadow: 1px 1px 5px rgb(173, 173, 173);
 }
 
 #removeReviewButton{
@@ -112,4 +113,20 @@
 #reviewEditSubmitButton{
     background-color: rgb(127,189,101);
     border: 0;
+}
+
+#recipeReviewsDiv{
+    padding-top: 30px;
+    border: 1px solid rgb(208, 208, 208);
+    border-radius: 10px;
+}
+
+#recipeReviewsBackButton{
+    border: 1px solid rgb(206, 206, 206);
+    background-color: rgb(228, 228, 228);
+    color: black;
+}
+
+#recipeReviewsBackButton:hover{
+    background-color: rgb(192, 192, 192);
 }

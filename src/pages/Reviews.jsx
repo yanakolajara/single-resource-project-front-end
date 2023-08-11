@@ -86,10 +86,10 @@ const Reviews = () => {
   return (
     <Container className="py-5">
       <h1>Reviews</h1>
-      <Link to={`/recipes/${id}`} className="btn btn-secondary my-3">
+      <Link to={`/recipes/${id}`} className="btn btn-secondary my-3" id="recipeReviewsBackButton">
         Go Back
       </Link>
-      <Row className="m-5">
+      <Row className="m-5" id='recipeReviewsDiv'>
         {addingReview ? (
           <ReviewForm
             handleAddClick={() => setAddingReview(false)}
@@ -111,14 +111,13 @@ const Reviews = () => {
                     handleAdd={handleAdd}
                     handleAddClick={() => setAddingReview(true)}
                   />
-                  <hr />
                 </div>
               ))
             ) : (
               <>
                 <h1>No Reviews For This Recipe!</h1>
                 <p>Be the first to review this recipe!</p>
-                <Button onClick={() => setAddingReview(true)}>
+                <Button onClick={() => setAddingReview(true)} style={{background: 'rgb(127,189,101)', border: '0'}}>
                   Add Review
                 </Button>
               </>
